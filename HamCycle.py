@@ -100,6 +100,25 @@ if e != 0:
 
 FindPossibleCycle(matrix)
 
+ans = []
+for i in range(len(allHamCycle)):
+    cd = False
+    rev = []
+    for j in range(len(allHamCycle[i])):
+        rev.append(allHamCycle[i][j])
+    rev.reverse()
+    j = i+1
+    while j<len(allHamCycle):
+        if rev == allHamCycle[j]:
+            cd = True
+            break
+        j+=1
+    if cd == False:
+        allHamCycle[i].reverse()
+        ans.append(allHamCycle[i])
+allHamCycle = ans
+ans= []
+
 print("\nAll possible Hamiltonian Cycles:")
 if len(allHamCycle) == 0:
     print("No Hamiltonian Cycle in graph")
@@ -146,5 +165,6 @@ else:
                 print(CycleAns[i][j], end=" -> ")
             else:
                 print(CycleAns[i][j])
+
 
 plt.show()
